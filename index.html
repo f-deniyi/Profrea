@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <title>Profrea Register Form</title>
+</head>
+
+<body>
+  <div class="register-container">
+    <div class='forms'>
+      <h3 class='about-yourself mr-2'>About Yourself</h3>
+      <h3 class='contact-info mr-2'>Contact Info</h3>
+      <h3 class='education'>Education</h3>
+    </div>
+  </div>
+  <div class="form-container">
+    <form action="" method="POST" class='slide'>
+      <fieldset>
+        <p class='validation-error-feedback'></p>
+        <legend> Basic Info</legend>
+        <div class="input-wrapper">
+          <label for="firstname" class='required-input'>First Name</label>
+          <input type="text" id="firstname" placeholder="John" required class='required'>
+        </div>
+        <div class=" input-wrapper">
+          <label for="lastname" class='required-input'>Last Name</label>
+          <input type="text" id="lastname" placeholder="Smith" required class='required'>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="DOB" class='required-input'>Date of Birth</label>
+          <input type="date" name="DOB" id="DOB" required class='required'>
+        </div>
+        <div class="input-wrapper">
+          <label for="phone" class='required-input'>Phone Number</label>
+          <input type="number" name="phone" id="phone" placeholder="Phone number" required class='required'>
+        </div>
+        <div class="input-wrapper">
+          <label for="email" class='required-input'>Email</label>
+          <input type="email" name="email" id="email" placeholder="Email Address" required class='required'>
+          <p class='email-error'></p>
+        </div>
+        <div class="input-wrapper-full">
+          <div class=profile-picture>
+            <div class="upload-btn">
+              <div class="upload-btn-wrapper">
+                <button class="file-btn">Upload Profile Picture</button>
+                <input type="file" accept="image/*" name="image" id="file" onchange="previewFile()">
+              </div>
+              <p class='upload-feedback-error'></p>
+            </div>
+
+            <div class="uploaded-image">
+              <img id="output">
+            </div>
+          </div>
+
+        </div>
+        <p class='submission-feedback'></p>
+      </fieldset>
+    </form>
+
+    <!-----Contact Info Form-->
+    <form action="" method="POST" class='slide'>
+      <p class='validation-error-feedback'></p>
+      <fieldset>
+        <legend>Address</legend>
+        <h2>Mail Address</h2>
+        <div class="input-wrapper">
+          <input type="text" name="mail" id="mail-address-1" placeholder="Address Line 1">
+        </div>
+        <div class="input-wrapper">
+          <input type="text" name="mail" id="mail-address-2" placeholder="Address Line 2">
+        </div>
+        <div class="input-wrapper">
+          <div class='address-details'>
+            <div class="city">
+              <input type="text" name="city" id="mail-city" placeholder="city">
+            </div>
+            <div class="state">
+              <input type="text" name="state" id="mail-state" placeholder="state">
+            </div>
+            <div class="zipcode">
+              <input type="text" name="zipcode" id="mail-zipcode" placeholder="Zipcode">
+            </div>
+          </div>
+        </div>
+
+        <h2>Permanent Address</h2>
+        <div class='input-wrapper'>
+          <input type="checkbox" id="same-address" class='check-box' name="same-address"
+            onclick="hidePermanentAddress()">
+          <label for="same-address"> Same as Mail Address</label><br>
+        </div>
+        <div class="permanent-address">
+          <div class="input-wrapper">
+            <input type="text" name="permanent-address-1" id="permanent-address-1" placeholder="Address Line 1">
+          </div>
+          <div class="input-wrapper">
+            <input type="text" name="permanent-address-2" id="permanent-address-2" placeholder="Address Line 2">
+          </div>
+          <div class="input-wrapper">
+            <div class='address-details'>
+              <div class="city">
+                <input type="text" name="city" id="permanent-city" placeholder="city">
+              </div>
+              <div class="state">
+                <input type="text" name="state" id="permanent-state" placeholder="state">
+              </div>
+              <div class="zipcode">
+                <input type="text" name="zipcode" id="permanent-zipcode" placeholder="Zipcode">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+
+    </form>
+
+    <form action="" method="POST" class='slide'>
+      <fieldset>
+        <p class='validation-error-feedback'></p>
+        <legend>Education</legend>
+        <div class="input-wrapper">
+          <label for="course">Higher Education</label>
+          <input type="text" placeholder="Select your higher education" id="select-education" onblur="hideContent()"
+            onfocus='showContent()' onkeyup="filterFunction()">
+          <div class="dropdown-content">
+            <p>M Tech</p>
+            <hr>
+            <p>B Tech</p>
+            <hr>
+            <p>MCA</p>
+            <hr>
+            <p>Not Found</p>
+          </div>
+        </div>
+        <div class='skills'>
+          <div class="input-wrapper">
+            <label for="Skills">Skills</label>
+            <div class='skill-container'>
+              <input type="text" name="skills" class="Skill" placeholder="Skill">
+            </div>
+            
+            <br>
+            <button type='button' onclick='addNewSkill()'>Add New Skill</button>
+            <button type='button' id='delete-skill' onclick='removeAddedSkill()'>Delete Skill</button>
+          </div>
+        </div>
+        <div class="education-file">
+          <div class="resume">
+            <h2 class='required-input'>Resume</h2>
+            <div class="upload-btn-wrapper">
+              <button class="file-btn" class='required'>Upload Resume</button>
+              <input required  type="file" accept=".doc,.pdf,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                class="upload-resumee" onchange="sendResumeFeedback()">
+              <p class='resume-feedback'></p>
+            </div>
+          </div>
+          <div class='education-docs'>
+            <h2 class='required-input'>Education Docs</h2>
+            <div class="upload-btn-wrapper">
+              <button class="file-btn" class='required'>Upload Document</button>
+              <input required  type="file" accept=".doc,.pdf,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                id="document" multiple onchange="sendDocumentFeedback()">
+              <p class='mute'>You can select more than one file</p>
+              <p class='document-feedback'></p>
+            </div>
+          </div>
+
+        </div>
+
+      </fieldset>
+    </form>
+
+    <div class="preview slide">
+      <div class='details'>
+        <div class='basic-details '>
+          <h2 Class='fullname text-center'>About Yourself</h2>
+          <hr>
+          <div class='user-details'>
+            <div>
+              <img class='user-profile-picture' src='' height='200px' width='200px'></img>
+            </div>
+            <div class='basic-info'>
+              <h4>First Name: <span class='first-name'>First-Name</span></h4>
+              <h4>Last Name: <span class='last-name'>Last-Name</span></h4>
+              <h4>Date of Birth: <span class="date-of-birth">Date of Birth</span></h4>
+              <h4> Phone Number: <span class=' phone-number'>User Number</span></h4>
+              <h4>Email: <span class='user-email'>User Email</span></h4>
+            </div>
+          </div>
+        </div>
+
+        <h2>Contact Info</h2>
+        <hr>
+        <div class='Contact Info'>
+          <h3>Mail Address</h3>
+          <p class='user-mail-Address1'>mail Address1</p>
+          <p class='user-mail-Address2'>mail Address2</p>
+          <p class='user-mail-city'>mail City</p>
+          <p class='user-mail-state'>mail State</p>
+          <p class='user-mail-zipcode'>mail ZipCode</p>
+          <br>
+          <h3>Permanent Address</h3>
+          <p class='same-address'></p>
+          <p class='user-permanent-Address1'>Permanent Address1</p>
+          <p class='user-permanent-Address2'>Permanent Address2</p>
+          <p class='user-permanent-city'>Permanent City</p>
+          <p class='user-permanent-state'>Permanet State</p>
+          <p class='user-permanent-zipcode'>Permanent ZipCode</p>
+        </div>
+
+        <h2>Education</h2>
+        <hr>
+        <div class="education">
+          <h4>Higher Education</h4>
+          <p class='user-higher-education'>Higher Education</p>
+          <br>
+          <h4>Skills</h4>
+          <p class='technical-skill'></p>
+          <br>
+          <h4>Resume</h4>
+          <p class="user-resume">Resume</p>
+          <br>
+          <h4>Education Docs</h4>
+          <p class='user-education-document'>Education Document</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="registration-feedback">
+    <h2 class='user-fullname'></h2>
+    <h3>Your Details has been recorded. Thank you!</h3>
+  </div>
+  <div class="control-button">
+    <button type='button' id='prev'>Prev</button>
+    <button type='button' id='next'>Next</button>
+    <button type='button' id='submit' onclick="showRegistrationFeedback()">Submit</button>
+    <button type id='preview' onclick="storeUserInput()">Preview</button>
+  </div>
+  <script src='script.js'></script>
+  <script src='generateuserinput.js'></script>
+</body>
+
+</html>
